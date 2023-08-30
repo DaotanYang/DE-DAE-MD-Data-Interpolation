@@ -64,7 +64,7 @@ https://data.ademe.fr/datasets/dpe-v2-logements-existants
 这个repository提供了论文中所有模型代码，模型主要分为以下四类：
 ### 1. DAE(Baseline Model)
 该模型为传统的DAE，由一个编码器和一个解码器组成。
-![Traditional DAE](figures/Traditional DAE.png)
+![Traditional DAE](figures/Traditional_DAE.png)
 ### 2. Dimension Enhanced DAE
 Dimension Enhanced DAE(DE-DAE) 对传统的DAE做了改进，增大了隐空间的维度。DE-DAE可以包含更多的信息，更加有利于数据插补。
 ![DE-DAE](figures/DE-DAE.png)
