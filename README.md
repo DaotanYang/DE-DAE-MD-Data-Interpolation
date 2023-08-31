@@ -2,20 +2,21 @@
 This is a repository for the dissertation: Enhancing Data Interpolation with Dimension-Enhanced Denoising Autoencoder with Multi-Decoder (DE-DAE-MD) on the French Building Energy Performance Dataset. Detailed experimental ideas and analyses of the results can be found in the paper. This README file mainly provides the code and how it is reproduced.
 
 ## Index
-* [Environment](##Environment)
+* [Environment](###Environment)
     * Local
     * Colab
-* [Dataset](##Dataset)
+* [Dataset](###Dataset)
     * Source
     * Other download links
     * Link for the dataset description files
-* [Model](##Model)
+* [Model](###Model)
     * DAE(baseline model)
     * DE-DAE
     * DE-DAE-MD
     * Ensemble
-* [Document Description](##Document Description)
-
+* [Document Description](###DocumentDescription)
+    * First-level catalogue
+    * Second-level catalogue
 
 
 ## Environment
@@ -39,7 +40,7 @@ The research data comes from a dataset in the open database of the French Enviro
 ```
 https://data.ademe.fr/datasets/dpe-v2-logements-existants
 ```
-The open source database website provides a variety of data formats, please select the csv format when downloading. Download steps are shown below:
+The open-source database website provides a variety of data formats, please select the CSV format when downloading. Download steps are shown below:
 ![step1](figures/dataset1.png)
 ![step2](figures/dataset2.png)
 ### Quick download link for the dataset
@@ -47,7 +48,7 @@ If your dataset download speed is slow, you can use the link below to download t
 ```
 https://drive.google.com/drive/folders/13IuaDAiNrfigCOLLU_NYZVKhuoBQ4HwV?usp=drive_link
 ```
-It is important to note that the data in this link was last updated in May 2023. If you wish to access the dataset containing the latest data, please follow the steps on the image to download it.
+It is important to note that the data in this link was last updated in May 2023. If you'd like to access the dataset containing the latest data, please follow the steps on the image to download it.
 
 ### Link for the dataset description files
 If you would like detailed information about the specifics of each variable in the dataset (including how certain variables are calculated), please download the following documents (note that these documents are also available for download from the data website):
@@ -66,16 +67,18 @@ The model is a conventional DAE, consisting of an encoder and a decoder.
 Dimension Enhanced DAE (DE-DAE) improves the traditional DAE by increasing the dimension of the hidden space. DE-DAE can contain more information and is more favourable for data interpolation.
 ![DE-DAE](figures/DE-DAE.png)
 ### 3. DE-DAE with Multi-decoder
-DE-DAE with Multi-decoder (DE-DAE-MD) further improves DE-DAE. It adds a number of parallel decoders, each responsible for decoding different data types. This enhances the data reduction capability of the decoders.
+DE-DAE with Multi-decoder (DE-DAE-MD) further improves DE-DAE. It adds several parallel decoders, each responsible for decoding different data types. This enhances the data reduction capability of the decoders.
 ![DE-DAE-MD](figures/DE-DAE-MD.png)
 ### 4. Ensemble Model
-To further enhance the data interpolation capability of the model, we used the Ensemble method. We modified the activation functions in DE-DAE-MD. In Ensemble Model, we used three DE-DAE-MD models with different activation functions and used the average of their results as the final prediction.
+We used the Ensemble method to enhance the model's data interpolation capability further. We modified the activation functions in DE-DAE-MD. In the Ensemble Model, we used three DE-DAE-MD models with different activation functions and used the average of their results as the final prediction.
 ![Ensemble method](figures/Ensemble_method.png)
 ## Result
-Since the code uses a Dropout layer and the training data is randomly divided, this results in the training and testing results not being exactly the same each time. Therefore, it is reasonable to expect an error of up to 2% if you reproduce the code.
+Since the code uses a Dropout layer and the training data is randomly divided, this results in the training and testing results not being the same each time. Therefore, it is reasonable to expect an error of up to 2% if you reproduce the code.
 The results from the experimental paper are saved in DPE_Data_imputation.ipynb. You can click on the file to view the results in it.
 
+
 ## Document Description
+### First-level catalogue
 The content contained in the first-level catalogue is shown below:
 
 | File/folder name | Details | 
@@ -87,6 +90,7 @@ The content contained in the first-level catalogue is shown below:
 | Ensemble Model |  Code for Ensemble Model; contains five subfolders, each containing three python files |
 | Notebook | Code in ipynb format |
 
+### Second-level catalogue
 Note that DAE, DE-DAE, DE-DAE-MD and Ensemble each contain five subfolders named Carpentry, ECS, Floor, Roof, and Walls. The five different subfolders represent five different reconstructed datasets.
 Each subfolder contains three different Python files. The naming and role of each file is shown below:
 | File name | Functions | 
@@ -97,7 +101,7 @@ Each subfolder contains three different Python files. The naming and role of eac
 
 In each Python file, I added detailed comments, and for files with a large number of lines, I also added an index at the beginning of the file for easy access to the code for the corresponding function.
 
-You can choose to run ipynb files or py files depending on your computer environment.
+Depending on your computer environment, you can choose to run ipynb files or py files.
 
 
 
