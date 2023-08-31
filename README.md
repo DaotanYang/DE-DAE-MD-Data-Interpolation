@@ -14,7 +14,7 @@ This is a repository for the dissertation: Enhancing Data Interpolation with Dim
     * DE-DAE
     * DE-DAE-MD
     * Ensemble
-* [Document Description](#Document-Description)
+* [Document Description](#Documents-Description)
     * First-level catalogue
     * Second-level catalogue
 
@@ -77,7 +77,7 @@ Since the code uses a Dropout layer and the training data is randomly divided, t
 The results from the experimental paper are saved in DPE_Data_imputation.ipynb. You can click on the file to view the results in it.
 
 
-## Document Description
+## Documents Description
 ### First-level catalogue
 The content contained in the first-level catalogue is shown below:
 
