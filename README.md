@@ -1,7 +1,7 @@
 # DE-DAE-MD-Data-Interpolation
-This is a repository for the dissertation: Enhancing Data Interpolation with Dimension-Enhanced Denoising Autoencoder with Multi-Decoder (DE-DAE-MD) on the French Building Energy Performance Dataset. 详细的实验思路以及结果分析请见论文。这个README文件主题提供代码以及代码的复现方法。
+This is a repository for the dissertation: Enhancing Data Interpolation with Dimension-Enhanced Denoising Autoencoder with Multi-Decoder (DE-DAE-MD) on the French Building Energy Performance Dataset. Detailed experimental ideas and analyses of the results can be found in the paper. This README file mainly provides the code and how it is reproduced.
 
-## 目录
+## Index
 * [Environment](##Environment)
     * Local
     * Colab
@@ -14,9 +14,7 @@ This is a repository for the dissertation: Enhancing Data Interpolation with Dim
     * DE-DAE
     * DE-DAE-MD
     * Ensemble
-* [Result](##Result)
-    * 来源于网络的图片
-    * GitHub仓库中的图片
+* [Document Description](##Document Description)
 
 
 
@@ -24,15 +22,15 @@ This is a repository for the dissertation: Enhancing Data Interpolation with Dim
 ### Local
 OS: Win 10/11
 Frame: Tensorflow
-GPU：Nvidia 3080Ti
-可以使用如下命令配置环境：
+GPU： Nvidia 3080Ti
+Use the following command to configure the environment:
 ```
 pip install -r requirements.txt
 ```
 
 
 ### Colab
-推荐使用Google Colab. 运行时的推荐配置为高RAM + Nvidia A100.
+Google Colab is recommended. The recommended runtime configuration is high RAM + Nvidia A100.
 
 
 ## Dataset
@@ -41,49 +39,65 @@ The research data comes from a dataset in the open database of the French Enviro
 ```
 https://data.ademe.fr/datasets/dpe-v2-logements-existants
 ```
-开源数据库网站中提供了多种数据格式，下载时请选择csv格式。下载步骤如下所示：
+The open source database website provides a variety of data formats, please select the csv format when downloading. Download steps are shown below:
 ![step1](figures/dataset1.png)
 ![step2](figures/dataset2.png)
 ### Quick download link for the dataset
-如果您的数据集下载速度较慢，可以使用下面的链接进行数据集的下载：
+If your dataset download speed is slow, you can use the link below to download the dataset:
 ```
-
+https://drive.google.com/drive/folders/13IuaDAiNrfigCOLLU_NYZVKhuoBQ4HwV?usp=drive_link
 ```
-但是需要注意，本链接中的数据最后更新于2023年5月。如果您希望获取包含最新数据的数据集，请按照上面的步骤进行下载。
+It is important to note that the data in this link was last updated in May 2023. If you wish to access the dataset containing the latest data, please follow the steps on the image to download it.
 
 ### Link for the dataset description files
-如果您想要详细了解数据集中各个变量的具体信息（包括某些变量的计算方式），请下载如下文档：
+If you would like detailed information about the specifics of each variable in the dataset (including how certain variables are calculated), please download the following documents (note that these documents are also available for download from the data website):
 ```
-
+https://drive.google.com/drive/folders/1nnXE7sM53MkJZ5vm7sI9CnkXm42pLESY?usp=drive_link
 ```
-
 
 
 
 ## Model
-这个repository提供了论文中所有模型代码，模型主要分为以下四类：
+This repository provides all the model codes in the paper, and the models are divided into the following four main categories:
 ### 1. DAE(Baseline Model)
-该模型为传统的DAE，由一个编码器和一个解码器组成。
+The model is a conventional DAE, consisting of an encoder and a decoder.
 ![Traditional DAE](figures/Traditional_DAE.png)
 ### 2. Dimension Enhanced DAE
-Dimension Enhanced DAE(DE-DAE) 对传统的DAE做了改进，增大了隐空间的维度。DE-DAE可以包含更多的信息，更加有利于数据插补。
+Dimension Enhanced DAE (DE-DAE) improves the traditional DAE by increasing the dimension of the hidden space. DE-DAE can contain more information and is more favourable for data interpolation.
 ![DE-DAE](figures/DE-DAE.png)
 ### 3. DE-DAE with Multi-decoder
-DE-DAE with Multi-decoder(DE-DAE-MD)对DE-DAE进行了进一步的改进。其增加了一些并行的解码器，每个解码器负责不同数据类型的解码。这样做可以增强解码器的数据还原能力。
+DE-DAE with Multi-decoder (DE-DAE-MD) further improves DE-DAE. It adds a number of parallel decoders, each responsible for decoding different data types. This enhances the data reduction capability of the decoders.
 ![DE-DAE-MD](figures/DE-DAE-MD.png)
 ### 4. Ensemble Model
-为了进一步增强模型的数据插补能力，我们采用了Ensemble方法。我们修改了DE-DAE-MD中的激活函数。在Ensemble Model中，我们采用了三个激活函数不同的DE-DAE-MD模型，并且将其结果的平均值作为最终的预测结果。
+To further enhance the data interpolation capability of the model, we used the Ensemble method. We modified the activation functions in DE-DAE-MD. In Ensemble Model, we used three DE-DAE-MD models with different activation functions and used the average of their results as the final prediction.
 ![Ensemble method](figures/Ensemble_method.png)
 ## Result
-由于代码中使用了Dropout层，并且训练数据是随机划分的，这导致每次的训练和测试结果不会完全一致。因此，您如果对代码进行复现，那么出现2%以内的误差是合理的。
-实验论文中的结果保存在xxx文件中。您可以点击文件查看其中的结果。
+Since the code uses a Dropout layer and the training data is randomly divided, this results in the training and testing results not being exactly the same each time. Therefore, it is reasonable to expect an error of up to 2% if you reproduce the code.
+The results from the experimental paper are saved in DPE_Data_imputation.ipynb. You can click on the file to view the results in it.
 
 ## Document Description
-### 目录结构说明
-### 
+The content contained in the first-level catalogue is shown below:
 
+| File/folder name | Details | 
+|---|---
+|DPE_Data_imputation.ipynb |  Contains all the code and the same results as in the paper |
+| DAE |  Code for DAE; contains five subfolders, each containing three python files |
+| DE-DAE |  Code for DE-DAE; contains five subfolders, each containing three python files |
+| DE-DAE-MD |  Code for DE-DAE-MD; contains five subfolders, each containing three python files |
+| Ensemble Model |  Code for Ensemble Model; contains five subfolders, each containing three python files |
+| Notebook | Code in ipynb format |
 
+Note that DAE, DE-DAE, DE-DAE-MD and Ensemble each contain five subfolders named Carpentry, ECS, Floor, Roof, and Walls. The five different subfolders represent five different reconstructed datasets.
+Each subfolder contains three different Python files. The naming and role of each file is shown below:
+| File name | Functions | 
+|---|---
+| models.py | Includes the model, loss function, and all functions and classes associated with the training and prediction process |
+| result.py |  Includes the main function, which can be run to obtain the corresponding experimental results. |
+| utilities.py |  Includes data preprocessing and other output functions |
 
+In each Python file, I added detailed comments, and for files with a large number of lines, I also added an index at the beginning of the file for easy access to the code for the corresponding function.
+
+You can choose to run ipynb files or py files depending on your computer environment.
 
 
 
