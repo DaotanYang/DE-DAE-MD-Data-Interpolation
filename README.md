@@ -2,19 +2,19 @@
 This is a repository for the dissertation: Enhancing Data Interpolation with Dimension-Enhanced Denoising Autoencoder with Multi-Decoder (DE-DAE-MD) on the French Building Energy Performance Dataset. Detailed experimental ideas and analyses of the results can be found in the paper. This README file mainly provides the code and how it is reproduced.
 
 ## Index
-* [Environment](###Environment)
+* [Environment](#Environment)
     * Local
     * Colab
-* [Dataset](###Dataset)
+* [Dataset](#Dataset)
     * Source
     * Other download links
     * Link for the dataset description files
-* [Model](###Model)
+* [Model](#Model)
     * DAE(baseline model)
     * DE-DAE
     * DE-DAE-MD
     * Ensemble
-* [Document Description](###DocumentDescription)
+* [Document Description](#Document-Description)
     * First-level catalogue
     * Second-level catalogue
 
